@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class StoreOrders {
 
     private ArrayList<Order> orders;
-
+    
     /**
      * Creates a new array list to hold pizza orders.
      */
@@ -60,7 +60,7 @@ public class StoreOrders {
      * @param file to export the orders.
      * @return true if export was completed successfully, otherwise return false. 
      */
-    public boolean export(File file) {    // should we add an if exist arg - she mentions it
+    public boolean export(File file) {
         try {
             FileWriter output = new FileWriter(file);
             for (Order order : orders)

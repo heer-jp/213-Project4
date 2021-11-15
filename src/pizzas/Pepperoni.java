@@ -24,6 +24,7 @@ public class Pepperoni extends Pizza {
 
     /**
      * Generates the price of the pepperoni pizza based on size and toppings.
+     * @return price of pizza as double
      */
     @Override
     public double price() {
@@ -37,13 +38,14 @@ public class Pepperoni extends Pizza {
         }
         int numToppings = toppings.size();
         if (numToppings > Pizza.PEPPERONI_TOPPINGS_COUNT) {
-        	price += Math.min(Pizza.TOPPING_PRICE * (double) Pizza.MAX_TOPPINGS_COUNT, Pizza.TOPPING_PRICE * (double) (numToppings - Pizza.PEPPERONI_TOPPINGS_COUNT));
+            price += Math.min(Pizza.TOPPING_PRICE * (double) (Pizza.MAX_TOPPINGS_COUNT-Pizza.PEPPERONI_TOPPINGS_COUNT), Pizza.TOPPING_PRICE * (double) (numToppings - Pizza.PEPPERONI_TOPPINGS_COUNT));
         }
         return Double.parseDouble(String.format("%,.2f", price));
     }
 
     /**
      * Converts pizza information into a string printout.
+     * @return string representation of pizza
      */
     @Override
     public String toString() {
@@ -53,6 +55,7 @@ public class Pepperoni extends Pizza {
 
     /**
      * Set pizza toppings to what the user selected.
+     * @param toppings list of the pizza's toppings
      */
     @Override
     public void setToppings(ArrayList<Topping> toppings) {
@@ -60,7 +63,8 @@ public class Pepperoni extends Pizza {
     }
 
     /**
-     * Set pizza size to what the user selected.
+     * Set pizza size to what the user selected. 
+     * @param size of the pizza
      */
     @Override
     public void setSize(Size size) {
@@ -69,6 +73,7 @@ public class Pepperoni extends Pizza {
 
     /**
      * Return the user selected toppings.
+     * @return list of toppings
      */
     @Override
     public ArrayList<Topping> getToppings() {
@@ -77,6 +82,7 @@ public class Pepperoni extends Pizza {
 
     /**
      * Return the user selected size.
+     * @return size of pizza
      */
     @Override
     public Size getSize() {
@@ -84,7 +90,8 @@ public class Pepperoni extends Pizza {
     }
 
     /**
-     * Return the user selected pizza type - Pepperoni.
+     * Method for getting the pizza type
+     * @return string of the pizza type
      */
     @Override
     public String getType() {

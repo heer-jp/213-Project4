@@ -9,14 +9,15 @@ import java.util.ArrayList;
  */
 public class Order {
     private String phoneNumber;
-    private ArrayList<Pizza> order = new ArrayList<Pizza>();
+    private ArrayList<Pizza> order;
 
     /**
      * Set phone number to the number given by user. 
-     * @param PHONENUMBER given by user.
+     * @param phoneNumber given by user.
      */
-    public Order(String PHONENUMBER) {
-        this.phoneNumber = PHONENUMBER;
+    public Order(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+        order = new ArrayList<>();
     }
 
     /**
@@ -74,6 +75,7 @@ public class Order {
 
     /**
      * Converts pizza orders into a string printout.
+     * @return string representation of the order
      */
     @Override
     public String toString() {

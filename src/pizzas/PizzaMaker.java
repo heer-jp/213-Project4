@@ -9,13 +9,13 @@ import java.util.ArrayList;
  */
 public class PizzaMaker {
 
-	/**
-	 * Creates an instance of pizza based on specificities chosen by user.
-	 * @param pizzaType Deluxe, Hawaiin, or Pepperoni chosen by user.
-	 * @param size Small, Medium, or Large chosen by user.
-	 * @param toppings variety chosen by user.
-	 * @return pizza instance with user's chosen specificities.
-	 */
+    /**
+     * Creates an instance of pizza based on specificities chosen by user.
+     * @param pizzaType Deluxe, Hawaiian, or Pepperoni chosen by user.
+     * @param size Small, Medium, or Large chosen by user.
+     * @param toppings variety chosen by user.
+     * @return pizza instance with user's chosen specificities.
+     */
     public static Pizza createPizza(String pizzaType, Size size, ArrayList<Topping> toppings) {
         Pizza pizza = null;
         if (pizzaType.equals(Pizza.DELUXE)) {

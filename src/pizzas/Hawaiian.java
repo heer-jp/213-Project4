@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Subclass of pizza that creates an instance of hawaiian pizza.
- * Includes size, toppings, and price variables.
+ * Includes size, toppings, and price variables. 
  * @author Sai Maduri, Heer Patel
  *
  */
@@ -15,7 +15,7 @@ public class Hawaiian extends Pizza {
     /**
      * Creates an instance of hawaiian pizza in the order.
      * @param size of pizza
-     * @param toppings of pizza
+     * @param toppings on pizza
      */
     public Hawaiian(Size size, ArrayList<Topping> toppings) {
         this.size = size;
@@ -24,6 +24,7 @@ public class Hawaiian extends Pizza {
 
     /**
      * Generates the price of the hawaiian pizza based on size and toppings.
+     * @return price of pizza as double
      */
     @Override
     public double price() {
@@ -37,13 +38,14 @@ public class Hawaiian extends Pizza {
         }
         int numToppings = toppings.size();
         if (numToppings > Pizza.HAWAIIAN_TOPPINGS_COUNT) {
-            price += Pizza.TOPPING_PRICE * (double) (numToppings - Pizza.HAWAIIAN_TOPPINGS_COUNT);
+            price += Math.min(Pizza.TOPPING_PRICE * (double) (Pizza.MAX_TOPPINGS_COUNT-Pizza.HAWAIIAN_TOPPINGS_COUNT), Pizza.TOPPING_PRICE * (double) (numToppings - Pizza.PEPPERONI_TOPPINGS_COUNT));
         }
         return Double.parseDouble(String.format("%,.2f", price));
     }
 
     /**
      * Converts pizza information into a string printout.
+     * @return string representation of pizza
      */
     @Override
     public String toString() {
@@ -53,6 +55,7 @@ public class Hawaiian extends Pizza {
 
     /**
      * Set pizza toppings to what the user selected.
+     * @param toppings list of the pizza's toppings
      */
     @Override
     public void setToppings(ArrayList<Topping> toppings) {
@@ -61,6 +64,7 @@ public class Hawaiian extends Pizza {
 
     /**
      * Set pizza size to what the user selected. 
+     * @param size of the pizza
      */
     @Override
     public void setSize(Size size) {
@@ -69,6 +73,7 @@ public class Hawaiian extends Pizza {
 
     /**
      * Return the user selected toppings.
+     * @return list of toppings
      */
     @Override
     public ArrayList<Topping> getToppings() {
@@ -77,6 +82,7 @@ public class Hawaiian extends Pizza {
 
     /**
      * Return the user selected size.
+     * @return size of pizza
      */
     @Override
     public Size getSize() {
@@ -84,7 +90,8 @@ public class Hawaiian extends Pizza {
     }
 
     /**
-     * Return the user selected pizza type - Hawaiian .
+     * Method for getting the pizza type
+     * @return string of the pizza type
      */
     @Override
     public String getType() {
