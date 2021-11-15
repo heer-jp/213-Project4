@@ -1,0 +1,7 @@
+/* Pizza images for MainMenu GUI */
+.root {
+    -fx-background-color:
+    
+            repeating-image-pattern("https://media.istockphoto.com/vectors/vector-pizza-seamless-pattern-vector-id1132703694?k=20&m=1132703694&s=612x612&w=0&h=3HoVpEoSjJiXEcKaRmPZFCZNQzADiADuUwLpUFJR1ww=");
+}
+

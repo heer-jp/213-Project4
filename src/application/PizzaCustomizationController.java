@@ -10,9 +10,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -26,7 +28,6 @@ public class PizzaCustomizationController {
 
     private String[] userData;
     private MainMenuController mainMenuController;
-    private CurrentOrderController currentOrderController;
     private String pizzaType;
 
     @FXML
@@ -86,8 +87,7 @@ public class PizzaCustomizationController {
 
     private int toppingsCount = 0;
     private ArrayList<Topping> toppings = new ArrayList<Topping>();
-    private Pizza tmpPricePizza;
-    private Pizza tmpNewPizza;
+    private Pizza tmpPizza;
 
     private double SMALL_SCALE = .6;
     private double MEDIUM_SCALE = .8;
@@ -95,7 +95,7 @@ public class PizzaCustomizationController {
 
     /**
      * Sends user and pizza information to MainMenu GUI.
-     * @param mainMenuController 
+     * @param mainMenuController controller to be set to pass data
      */
     public void setMainController(MainMenuController mainMenuController) {
         this.mainMenuController = mainMenuController;
@@ -107,17 +107,10 @@ public class PizzaCustomizationController {
     }
 
     /**
-     * Sends user and pizza information to CurrentOrder GUI.
-     * @param controller
+     * Close PizzaMaker GUI
      */
-    public void setCurrentOrderController(CurrentOrderController controller) {
-        tmpNewPizza = currentOrderController.getSelectedPizza();
-        this.currentOrderController = controller;
-        this.userData = (String[]) currentOrderController.getUserData();
-        lblPhoneNumber.setText(userData[0]);
-        this.pizzaType = userData[1];
-        setDefaultTopppings();
-        displaySubtotal();
+    private void closeScene() {
+        ((Stage) lblPhoneNumber.getScene().getWindow()).close();
     }
 
     /**
@@ -126,15 +119,15 @@ public class PizzaCustomizationController {
      */
     @FXML
     public void addToOrder(ActionEvent event) {
-        mainMenuController.addPizzaToOrder(tmpPricePizza);
-        if (currentOrderController != null) {
-            mainMenuController.getOrder().removePizza(tmpNewPizza);
-            currentOrderController.fillListView();
-        } else {
+        try {
+            mainMenuController.addPizzaToOrder(tmpPizza);
             mainMenuController.addOrderToCart();
+        } catch (Exception e) {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setContentText("An error occured while trying to add this pizza. Please try again.");
+            alert.show();
         }
-        Stage stage = (Stage) lblPhoneNumber.getScene().getWindow();
-        stage.close();
+        closeScene();
     }
 
     /**
@@ -146,7 +139,7 @@ public class PizzaCustomizationController {
         CheckBox topping = (CheckBox) event.getSource();
         if (!topping.isSelected()) {
             if (toppingsCount > 0) {
-                toppingsCount -= 1;
+                toppingsCount--;
                 toppings.remove(getTopping(topping.getText().toUpperCase()));
                 setImage(getTopping(topping.getText().toUpperCase()), false);
             }
@@ -156,7 +149,7 @@ public class PizzaCustomizationController {
             } else {
                 toppings.add(getTopping(topping.getText().toUpperCase()));
                 setImage(getTopping(topping.getText().toUpperCase()), true);
-                toppingsCount += 1;
+                toppingsCount++;
             }
         }
         displaySubtotal();
@@ -176,24 +169,24 @@ public class PizzaCustomizationController {
      * Change pizza image scale dependent on pizza size selection.
      */
     public void setImageSize() {
-        double imageScale = 0;
         switch (cbSize.getSelectionModel().getSelectedItem()) {
             case "Small":
-                imageScale = SMALL_SCALE;
+                spToppings.setScaleX(SMALL_SCALE);
+                spToppings.setScaleY(SMALL_SCALE);
                 break;
             case "Medium":
-                imageScale = MEDIUM_SCALE;
+                spToppings.setScaleX(MEDIUM_SCALE);
+                spToppings.setScaleY(MEDIUM_SCALE);
                 break;
             case "Large":
-                imageScale = LARGE_SCALE;
+                spToppings.setScaleX(LARGE_SCALE);
+                spToppings.setScaleY(LARGE_SCALE);
                 break;
         }
-        spToppings.setScaleX(imageScale);
-        spToppings.setScaleY(imageScale);
     }
 
     /**
-     * Close PizzaMaker GUI and update MainMenu GUI with the newly created pizza order data.
+     * Update MainMenu GUI with the newly created pizza order data.
      */
     @FXML
     public void exit() {
@@ -256,12 +249,12 @@ public class PizzaCustomizationController {
             setImage(Topping.SAUSAGE, true);
             setImage(Topping.PEPPERS, true);
             setImage(Topping.ONIONS, true);
-            setImage(Topping.BACON, true);
+            setImage(Topping.OLIVES, true);
             cbChicken.setSelected(true);
             cbSausage.setSelected(true);
             cbPeppers.setSelected(true);
             cbOnions.setSelected(true);
-            cbBacon.setSelected(true);
+            cbOlives.setSelected(true);
             loadToppings();
             toppingsCount = Pizza.DELUXE_TOPPINGS_COUNT;
         } else if (pizzaType.equals(Pizza.HAWAIIAN)) {
@@ -283,8 +276,8 @@ public class PizzaCustomizationController {
      * Display the subtotal of pizza order in allocated location.
      */
     public void displaySubtotal() {
-        tmpPricePizza = PizzaMaker.createPizza(pizzaType, getSize(cbSize.getSelectionModel().getSelectedItem()), toppings);
-        String price = String.format("%,.2f", tmpPricePizza.price());
+        tmpPizza = PizzaMaker.createPizza(pizzaType, getSize(cbSize.getSelectionModel().getSelectedItem()), toppings);
+        String price = String.format("%,.2f", tmpPizza.price());
         subTotal.setText("$" + price);
     }
 

@@ -97,7 +97,6 @@ public class MainMenuController {
         rdbPepperoni.setSelected(false);
         btnStoreOrders.setDisable(false);
         btnComplete.setDisable(false);
-        ;
     }
 
     /**
@@ -114,7 +113,7 @@ public class MainMenuController {
                 PizzaCustomizationController pizzaController = loader.getController();
                 pizzaController.setMainController(this);
                 Scene pizzaScene = new Scene(pizzaCustomizer, 600, 400);
-                pizzaScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+                pizzaScene.getStylesheets().add(getClass().getResource("backgroundColor.css").toExternalForm());
                 Stage primaryStage = new Stage();
                 primaryStage.setOnHidden(e -> pizzaController.exit());
                 primaryStage.setTitle("Customize Your Pizza");
@@ -145,9 +144,9 @@ public class MainMenuController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("CurrentOrderView.fxml"));
                 BorderPane currentOrder = (BorderPane) loader.load();
                 CurrentOrderController cartController = loader.getController();
-                cartController.setMainController(this);
+                cartController.setMainMenuController(this);
                 Scene cart = new Scene(currentOrder, 600, 400);
-                cart.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+                cart.getStylesheets().add(getClass().getResource("backgroundColor.css").toExternalForm());
                 Stage primaryStage = new Stage();
                 primaryStage.setOnHidden(e -> cartController.exit());
                 primaryStage.setTitle("Order");
@@ -177,6 +176,7 @@ public class MainMenuController {
         }
     }
 
+
     /**
      * Open StoreOrders GUI to view all pizza order(s) made.
      * @param event button click
@@ -191,7 +191,7 @@ public class MainMenuController {
                 StoreOrdersController storeOrdersController = loader.getController();
                 storeOrdersController.setMainMenuController(this);
                 Scene StoreOrder = new Scene(storeOrders, 600, 400);
-                StoreOrder.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+                StoreOrder.getStylesheets().add(getClass().getResource("backgroundColor.css").toExternalForm());
                 Stage primaryStage = new Stage();
                 primaryStage.setOnHidden(e -> storeOrdersController.exit());
                 primaryStage.setTitle("All Store Orders");
@@ -231,7 +231,7 @@ public class MainMenuController {
     /**
      * Get user specified data.
      * Includes user phone number and pizza type selection.
-     * @return
+     * @return all user data in string array format
      */
     public String[] getUserData() {
         String phoneNumber = txtPhoneNumber.getText();
@@ -275,7 +275,7 @@ public class MainMenuController {
      * Allow for new pizza orders to be made.
      */
     public void clearOrder() {
-        btnCart.setText("Cart");
+        btnCart.setText("Vew Current Order");
         txtPhoneNumber.setText("");
         order = null;
         cartSize = 0;
@@ -324,14 +324,14 @@ public class MainMenuController {
             btnCart.setDisable(true);
         } else {
             txtPhoneNumber.setDisable(true);
-            btnCart.setText("Cart (" + cartSize + ")");
+            btnCart.setText("View Current Order (" + cartSize + ")");
             btnCart.setDisable(false);
         }
     }
 
     /**
      * Add pizza to order list.
-     * @param pizza
+     * @param pizza to add to the order
      */
     public void addPizzaToOrder(Pizza pizza) {
         order.addPizza(pizza);

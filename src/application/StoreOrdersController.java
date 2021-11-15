@@ -32,7 +32,7 @@ public class StoreOrdersController {
 
     /**
      * Sends user and pizza information to MainMenu Gui.
-     * @param mainMenuController
+     * @param mainMenuController controller to be set to pass data
      */
     public void setMainMenuController(MainMenuController mainMenuController) {
         this.mainMenuController = mainMenuController;
@@ -63,7 +63,7 @@ public class StoreOrdersController {
     }
 
     /**
-     * Cancel all pizza orders.
+     * Cancel the currently selected pizza order.
      * @param event button click
      */
     @FXML

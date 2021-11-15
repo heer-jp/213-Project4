@@ -15,19 +15,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="791.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainMenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="791.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainMenuController">
    <top>
       <VBox alignment="CENTER" prefHeight="351.0" prefWidth="791.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="Phone Number: " />
+                  <Label text="Phone Number: " textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font></Label>
                   <TextField fx:id="txtPhoneNumber" alignment="CENTER" promptText="(xxx)-xxx-xxxx" />
                </children>
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="271.0" prefWidth="600.0">
                <children>
-                  <RadioButton fx:id="rdbDeluxe" mnemonicParsing="false" onAction="#enableNewOrder">
+                  <RadioButton fx:id="rdbDeluxe" mnemonicParsing="false" onAction="#enableNewOrder" prefHeight="200.0" prefWidth="233.0">
                   <toggleGroup>
 	                  <ToggleGroup fx:id="tgPizzaType" />
 	               </toggleGroup>
@@ -39,13 +42,16 @@
                                     <Image url="@images/deluxe.png" />
                                  </image>
                                  <VBox.margin>
-                                    <Insets left="10.0" top="20.0" />
+                                    <Insets top="20.0" />
                                  </VBox.margin>
                               </ImageView>
-                              <Label text="Deluxe (5 Toppings)">
+                              <Label text="Deluxe (5 Toppings)" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin>
+                                 <font>
+                                    <Font name="Nirmala UI Bold" size="15.0" />
+                                 </font>
                               </Label>
                            </children>
                         </VBox>
@@ -54,22 +60,25 @@
                         <Insets left="20.0" right="20.0" />
                      </padding>
                      </RadioButton>
-                  <RadioButton fx:id="rdbHawaiian" mnemonicParsing="false" onAction="#enableNewOrder" toggleGroup="$tgPizzaType">
+                  <RadioButton fx:id="rdbHawaiian" mnemonicParsing="false" onAction="#enableNewOrder" prefHeight="200.0" prefWidth="238.0" toggleGroup="$tgPizzaType">
                      <graphic>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="146.0">
                            <children>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="141.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@images/hawaiian.png" />
                                  </image>
                                  <VBox.margin>
-                                    <Insets left="10.0" top="20.0" />
+                                    <Insets top="20.0" />
                                  </VBox.margin>
                               </ImageView>
-                              <Label text="Hawaiian (2 Toppings)">
+                              <Label text="Hawaiian (2 Toppings)" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin>
+                                 <font>
+                                    <Font name="Nirmala UI Bold" size="15.0" />
+                                 </font>
                               </Label>
                            </children>
                         </VBox>
@@ -90,10 +99,13 @@
                                     <Insets left="10.0" top="20.0" />
                                  </VBox.margin>
                               </ImageView>
-                              <Label text="Pepperoni (1 Topping)">
+                              <Label text="Pepperoni (1 Topping)" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin>
+                                 <font>
+                                    <Font name="Nirmala UI Bold" size="15.0" />
+                                 </font>
                               </Label>
                            </children>
                         </VBox>
@@ -106,15 +118,13 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="69.0" prefWidth="791.0">
                <children>
-                  <Button fx:id="btnNewOrder" disable="true" mnemonicParsing="false" onAction="#newOrder" text="Add Pizza" textAlignment="CENTER">
+                  <Button fx:id="btnNewOrder" disable="true" mnemonicParsing="false" onAction="#newOrder" prefHeight="25.0" prefWidth="93.0" style="-fx-background-color: white;" text="Add Pizza" textAlignment="CENTER">
                      <HBox.margin>
-                        <Insets left="10.0" right="10.0" />
+                        <Insets left="40.0" />
                      </HBox.margin>
-                  </Button>
-                  <Button fx:id="btnCart" disable="true" mnemonicParsing="false" onAction="#viewCart" text="View Cart" textAlignment="CENTER">
-                     <HBox.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
                   </Button>
                </children>
             </HBox>
@@ -124,7 +134,10 @@
    <left>
       <VBox alignment="CENTER" prefHeight="393.0" prefWidth="389.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Orders" />
+            <Label text="Orders" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font></Label>
             <ListView fx:id="lvOrders" prefHeight="405.0" prefWidth="389.0" />
          </children>
          <opaqueInsets>
@@ -136,43 +149,55 @@
       </VBox>
    </left>
    <right>
-      <VBox alignment="CENTER" prefHeight="393.0" prefWidth="454.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="302.0" prefWidth="389.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnComplete" mnemonicParsing="false" onAction="#completeOrder">
+            <Button fx:id="btnCart" contentDisplay="TOP" disable="true" mnemonicParsing="false" onAction="#viewCart" prefHeight="121.0" prefWidth="179.0" style="-fx-background-color: white;" text="View Current Order" textAlignment="CENTER">
                <graphic>
-                  <VBox alignment="CENTER" prefHeight="70.0" prefWidth="100.0">
-                     <children>
-                        <ImageView fitHeight="100.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/pizzabox.png" />
-                           </image>
-                        </ImageView>
-                        <Label text="Complete Order" />
-                     </children>
-                  </VBox>
+                  <ImageView fitHeight="92.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/newCurrentOrders.jpg" />
+                     </image></ImageView>
                </graphic>
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </Button>
-            <Button fx:id="btnStoreOrders" mnemonicParsing="false" onAction="#viewStoreOrders">
+            <Button fx:id="btnStoreOrders" mnemonicParsing="false" onAction="#viewStoreOrders" prefHeight="115.0" prefWidth="183.0" style="-fx-background-color: white;">
                <graphic>
                   <VBox alignment="CENTER" prefHeight="70.0" prefWidth="100.0">
                      <children>
                         <ImageView fitHeight="100.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/store.png" />
+                              <Image url="@images/newStoreOrders.png" />
                            </image>
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
                         </ImageView>
-                        <Label text="View Store Orders" />
+                        <Label text="View Store Orders">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
                      </children>
                   </VBox>
                </graphic>
                <VBox.margin>
                   <Insets top="20.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btnComplete" mnemonicParsing="false" onAction="#completeOrder" style="-fx-background-color: white;">
+               <graphic>
+                  <VBox alignment="CENTER" prefHeight="17.0" prefWidth="102.0">
+                     <children>
+                        <Label text="Complete Order">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                  </VBox>
+               </graphic>
+               <VBox.margin>
+                  <Insets top="15.0" />
                </VBox.margin>
             </Button>
          </children>

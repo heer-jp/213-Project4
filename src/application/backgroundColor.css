@@ -1,0 +1,7 @@
+/* background color for all GUI besides MainMenu GUI*/
+
+.root {
+    -fx-background-color:
+            linear-gradient(#F7D08A, #E5890A);   
+}
+

@@ -11,13 +11,23 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PizzaCustomizationController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PizzaCustomizationController">
    <top>
       <HBox alignment="TOP_CENTER" prefHeight="58.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Phone Number:" />
-            <Label fx:id="lblPhoneNumber" text="Label" />
+            <Label text="Phone Number:">
+               <font>
+                  <Font name="Nirmala UI Bold" size="16.0" />
+               </font></Label>
+            <Label fx:id="lblPhoneNumber" text="Label">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="3.0" />
+               </HBox.margin></Label>
          </children>
       </HBox>
    </top>
@@ -129,7 +139,7 @@
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="258.0">
                <children>
-                  <ComboBox fx:id="cbSize" onAction="#updateSize" prefHeight="26.0" prefWidth="223.0" promptText="Select Size">
+                  <ComboBox fx:id="cbSize" onAction="#updateSize" prefHeight="26.0" prefWidth="223.0" promptText="Select Size" style="-fx-background-color: white;">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
@@ -138,12 +148,30 @@
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <CheckBox fx:id="cbPepperoni" mnemonicParsing="false" onAction="#updateToppings" text="Pepperoni" />
-                              <CheckBox fx:id="cbExtraCheese" mnemonicParsing="false" onAction="#updateToppings" text="ExtraCheese" />
-                              <CheckBox fx:id="cbBacon" mnemonicParsing="false" onAction="#updateToppings" text="Bacon" />
-                              <CheckBox fx:id="cbJalapenos" mnemonicParsing="false" onAction="#updateToppings" prefWidth="230.0" text="Jalapenos" />
-                              <CheckBox fx:id="cbOnions" mnemonicParsing="false" onAction="#updateToppings" text="Onions" />
-                              <CheckBox fx:id="cbChicken" mnemonicParsing="false" onAction="#updateToppings" text="Chicken" />
+                              <CheckBox fx:id="cbPepperoni" mnemonicParsing="false" onAction="#updateToppings" text="Pepperoni">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font></CheckBox>
+                              <CheckBox fx:id="cbExtraCheese" mnemonicParsing="false" onAction="#updateToppings" text="ExtraCheese">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font></CheckBox>
+                              <CheckBox fx:id="cbBacon" mnemonicParsing="false" onAction="#updateToppings" text="Bacon">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font></CheckBox>
+                              <CheckBox fx:id="cbJalapenos" mnemonicParsing="false" onAction="#updateToppings" prefWidth="230.0" text="Jalapenos">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font></CheckBox>
+                              <CheckBox fx:id="cbOnions" mnemonicParsing="false" onAction="#updateToppings" text="Onions">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font></CheckBox>
+                              <CheckBox fx:id="cbChicken" mnemonicParsing="false" onAction="#updateToppings" text="Chicken">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font></CheckBox>
                            </children>
                            <HBox.margin>
                               <Insets left="10.0" right="10.0" />
@@ -151,11 +179,26 @@
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <CheckBox fx:id="cbSausage" mnemonicParsing="false" onAction="#updateToppings" text="Sausage" />
-                              <CheckBox fx:id="cbPeppers" mnemonicParsing="false" onAction="#updateToppings" text="Peppers" />
-                              <CheckBox fx:id="cbOlives" mnemonicParsing="false" onAction="#updateToppings" text="Olives" />
-                              <CheckBox fx:id="cbMushrooms" mnemonicParsing="false" onAction="#updateToppings" text="Mushrooms" />
-                              <CheckBox fx:id="cbPineapple" mnemonicParsing="false" onAction="#updateToppings" text="Pineapple" />
+                              <CheckBox fx:id="cbSausage" mnemonicParsing="false" onAction="#updateToppings" text="Sausage">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font></CheckBox>
+                              <CheckBox fx:id="cbPeppers" mnemonicParsing="false" onAction="#updateToppings" text="Peppers">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font></CheckBox>
+                              <CheckBox fx:id="cbOlives" mnemonicParsing="false" onAction="#updateToppings" text="Olives">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font></CheckBox>
+                              <CheckBox fx:id="cbMushrooms" mnemonicParsing="false" onAction="#updateToppings" text="Mushrooms">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font></CheckBox>
+                              <CheckBox fx:id="cbPineapple" mnemonicParsing="false" onAction="#updateToppings" text="Pineapple">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font></CheckBox>
                            </children>
                            <HBox.margin>
                               <Insets left="10.0" right="10.0" />
@@ -174,14 +217,23 @@
    <bottom>
       <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="129.0">
+            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="115.0">
                <children>
-                  <Label text="  Subtotal: " />
-                  <Label fx:id="subTotal" text="Label" />
-                  <Button mnemonicParsing="false" onAction="#addToOrder" prefHeight="25.0" prefWidth="111.0" text="Add to Order">
+                  <Label text="  Subtotal: ">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="15.0" />
+                     </font></Label>
+                  <Label fx:id="subTotal" text="Label">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Button mnemonicParsing="false" onAction="#addToOrder" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: white;" text="Add to Order">
                      <VBox.margin>
                         <Insets bottom="-10.0" top="10.0" />
-                     </VBox.margin></Button>
+                     </VBox.margin>
+                     <font>
+                        <Font name="Nirmala UI Bold" size="12.0" />
+                     </font></Button>
                   <Label />
                </children>
             </VBox>

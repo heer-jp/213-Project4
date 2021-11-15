@@ -12,16 +12,16 @@ import javafx.scene.layout.BorderPane;
  *
  */
 public class Main extends Application {
-	
-	/**
-	 *  Initializes the Main Menu scene by loading the MainMenuView.fxml file.
-	 */
+    
+    /**
+     *  Initializes the Main Menu scene by loading the MainMenuView.fxml file.
+     */
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 		    BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("MainMenuView.fxml"));
 			Scene mainMenuScene = new Scene(root,750,800);
-			mainMenuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			mainMenuScene.getStylesheets().add(getClass().getResource("mainMenu.css").toExternalForm());
 			primaryStage.setTitle("Main Menu");
 			primaryStage.setScene(mainMenuScene);
 			primaryStage.show();
@@ -31,9 +31,9 @@ public class Main extends Application {
 	}
 	
 	/**
-	 * Calls the JavaFX Application's launch() method, which starts up the project.
-	 * @param args user input.
-	 */
+     * Calls the JavaFX Application's launch() method, which starts up the project.
+     * @param args user input.
+     */
 	public static void main(String[] args) {
 		launch(args);
 	}

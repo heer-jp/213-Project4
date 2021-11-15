@@ -9,9 +9,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 /**
@@ -25,7 +27,6 @@ public class CurrentOrderController {
     private MainMenuController mainMenuController;
     private Order order;
     private String phoneNumber;
-    private Pizza selectedPizza;
 
     @FXML
     private ListView<String> lvOrder;
@@ -40,9 +41,9 @@ public class CurrentOrderController {
 
     /**
      * Sends user and pizza information to MainMenu Gui.
-     * @param mainMenuController
+     * @param mainMenuController controller to be set to pass data
      */
-    public void setMainController(MainMenuController mainMenuController) {
+    public void setMainMenuController(MainMenuController mainMenuController) {
         this.mainMenuController = mainMenuController;
         this.order = mainMenuController.getOrder();
         phoneNumber = order.getPhoneNumber();
@@ -52,7 +53,7 @@ public class CurrentOrderController {
 
     /**
      * Get selected pizza order.
-     * @return
+     * @return currently selected pizza
      */
     public Pizza getSelectedPizza() {
         return order.getOrder().get(lvOrder.getSelectionModel().getSelectedIndex());
@@ -66,7 +67,7 @@ public class CurrentOrderController {
     }
 
     /**
-     * Close GUI and update the MainMenu GUI.
+     * Update the MainMenu GUI.
      */
     @FXML
     public void exit() {
@@ -88,24 +89,7 @@ public class CurrentOrderController {
         lblTotal.setText(String.format(" $%,.2f", order.getPrice()));
         lvOrder.setItems(lvElem);
     }
-
-    /**
-     * Get user information and pizza orders.
-     * @return
-     */
-    public String[] getUserData() {
-        int numToppings = selectedPizza.getToppings().size();
-        String[] data = new String[numToppings + 3];
-        int storeToppingsStartIndex = 3;
-        ArrayList<Topping> topping = selectedPizza.getToppings();
-        data[0] = order.getPhoneNumber();
-        data[1] = selectedPizza.getType();
-        data[2] = selectedPizza.getSize().name();
-        for (int i = storeToppingsStartIndex; i < data.length; i++)
-            data[i] = topping.get(i - storeToppingsStartIndex).name();
-        return data;
-    }
-
+    
     /**
      * Cancel all orders for a specific user.
      * @param event button click
@@ -116,7 +100,9 @@ public class CurrentOrderController {
             mainMenuController.clearOrder();
             closeScene();
         } catch (NullPointerException e) {
-            // lets add an alert here
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setContentText("An error occured while trying to cancel the order. Please try again.");
+            alert.show();
         }
     }
 
@@ -130,7 +116,9 @@ public class CurrentOrderController {
             mainMenuController.addToStoreOrders(order);
             closeScene();
         } catch (NullPointerException e) {
-            // lets add an alert here as well
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setContentText("An error occured while trying place the order. Please try again.");
+            alert.show();
         }
     }
 
@@ -150,6 +138,10 @@ public class CurrentOrderController {
                 mainMenuController.clearOrder();
                 closeScene();
             }
+        } else {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setContentText("Please select a pizza to remove.");
+            alert.show();
         }
     }
 }
